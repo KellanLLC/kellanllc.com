@@ -1,9 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kellan LLC - Missed Call Automation & CRM for Plumbers + HVAC</title>
+  <title>Never Lose a Customer</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="kellanllc_logo.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="kellanllc_logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="kellanllc_logo.png" />
   <meta name="description" content="Kellan LLC helps plumbers and HVAC contractors turn missed calls into booked jobs with call tracking, follow-ups, and simple CRM." />
   <style>
     :root {
@@ -39,9 +42,10 @@
       font-weight: 800; letter-spacing: .3px;
     }
     .logo {
-      width: 36px; height: 36px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--shadow);
+      width: 36px; height: 36px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,.45));
     }
     .links {
       display:flex; gap: 14px; align-items:center; flex-wrap:wrap;
@@ -236,6 +240,7 @@
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
+      .pill { display: none; }
       .how { grid-template-columns: 1fr; }
       .pricing { grid-template-columns: 1fr; }
       .contact { grid-template-columns: 1fr; }
@@ -249,7 +254,7 @@
   <div class="wrap">
     <div class="nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo" src="kellanllc_logo.png" alt="Kellan LLC logo" />
         <div>Kellan LLC</div>
       </div>
       <div class="links">
