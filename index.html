@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Never Lose a Customer</title>
+  <title>Never Miss a Call Again - Kellan</title>
   <link rel="icon" type="image/png" sizes="32x32" href="kellanllc_logo.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="kellanllc_logo.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="kellanllc_logo.png" />
@@ -36,6 +36,7 @@
     .nav {
       display:flex; align-items:center; justify-content:space-between;
       gap: 14px; padding: 10px 0 18px;
+      flex-wrap: wrap;
     }
     .brand {
       display:flex; align-items:center; gap: 10px;
@@ -48,10 +49,17 @@
       filter: drop-shadow(0 0 8px rgba(255,255,255,.45));
     }
     .links {
-      display:flex; gap: 14px; align-items:center; flex-wrap:wrap;
+      display:flex; gap: 14px; align-items:center;
       color: var(--muted); font-weight: 600; font-size: 14px;
+      flex-wrap: nowrap;
     }
-    .links a { padding: 8px 10px; border-radius: 12px; }
+    .nav-links {
+      display: flex; gap: 4px; align-items: center;
+    }
+    .nav-btns {
+      display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+    }
+    .links a { padding: 8px 10px; border-radius: 12px; white-space: nowrap; }
     .links a:hover { background: rgba(255,255,255,.06); color: var(--text); }
     .btn {
       display:inline-flex; align-items:center; justify-content:center;
@@ -123,17 +131,8 @@
     }
     .stat strong { display:block; font-size: 18px; }
     .stat span { color: var(--muted); font-size: 13px; }
-    .grid3 {
-      display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-      margin-top: 18px;
-    }
     .grid4 {
       display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
-      margin-top: 18px;
-    }
-    
-    .grid3 {
-      display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
       margin-top: 18px;
     }
     .tile {
@@ -142,11 +141,9 @@
       flex-direction: column;
       gap: 10px;
     }
-.tile h3 { margin: 8px 0 6px; font-size: 16px; }
+    .tile h3 { margin: 8px 0 6px; font-size: 16px; }
     .tile p { margin: 0; color: var(--muted); font-size: 14px; }
     .icon {
-      margin-bottom: 2px;
-
       width: 34px; height: 34px; border-radius: 12px;
       display:flex; align-items:center; justify-content:center;
       background: rgba(124,92,255,.16);
@@ -164,9 +161,7 @@
     .how {
       display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
     }
-    .step {
-      padding: 18px;
-    }
+    .step { padding: 18px; }
     .step b {
       display:inline-flex;
       width: 30px; height: 30px;
@@ -229,13 +224,19 @@
       display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;
     }
     .footer a { color: var(--muted); text-decoration: underline; }
-    
+
+    @media (max-width: 1000px) and (min-width: 769px) {
+      .nav-links a { padding: 8px 7px; font-size: 13px; }
+    }
+
     @media (max-width: 768px) {
       .nav { flex-direction: column; align-items: stretch; }
       .brand { justify-content: center; }
-      .links { justify-content: center; }
-      .links a { text-align: center; }
-      .links a.btn { flex: 1 1 45%; justify-content: center; }
+      .links { flex-direction: column; align-items: stretch; gap: 10px; }
+      .nav-links { justify-content: center; flex-wrap: wrap; }
+      .nav-links a { text-align: center; }
+      .nav-btns { justify-content: center; }
+      .nav-btns .btn { flex: 1 1 45%; justify-content: center; }
     }
 
     @media (max-width: 900px) {
@@ -248,6 +249,13 @@
       .grid4 { grid-template-columns: 1fr; }
     }
 
+    /* A2P SMS consent (scoped + minimal) */
+    .sms-optin { margin-top: 10px; display: grid; gap: 10px; }
+    .sms-check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+    .sms-check input { margin-top: 3px; width: 16px; height: 16px; flex: 0 0 auto; accent-color: var(--accent); }
+    .sms-check span { font-size: 13px; line-height: 1.35; }
+    .sms-check a { text-decoration: underline; color: var(--accent2); }
+    .form-status { margin-top: 10px; font-size: 13px; line-height: 1.35; color: var(--good); min-height: 1em; }
   </style>
 </head>
 <body>
@@ -255,15 +263,22 @@
     <div class="nav">
       <div class="brand">
         <img class="logo" src="kellanllc_logo.png" alt="Kellan LLC logo" />
-        <div>Kellan LLC</div>
+        <div>
+          kellan
+          <div style="font-size: 10px; font-weight: 500; color: var(--muted); letter-spacing: .4px; margin-top: 1px;">Never lose a lead again</div>
+        </div>
       </div>
       <div class="links">
-        <a href="#services">Services</a>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-        <a class="btn secondary" href="tel:+13852004532">Call</a>
-        <a class="btn" href="#contact">Get started</a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-btns">
+          <a class="btn secondary" href="tel:+13159271510">Call</a>
+          <a class="btn" href="#contact">Get started</a>
+        </div>
       </div>
     </div>
 
@@ -276,7 +291,7 @@
         </p>
         <div class="ctaRow">
           <a class="btn" href="#contact">Request a demo</a>
-          <a class="btn secondary" href="tel:+13852004532">Call 385-200-4532</a>
+          <a class="btn secondary" href="tel:+13159271510">Call 315-927-1510</a>
         </div>
         <p class="mini">Fast setup. No tech headache. Clear ROI.</p>
       </div>
@@ -389,12 +404,13 @@
         <div class="card" style="padding:20px">
           <h3 style="margin:0 0 8px">Contact</h3>
           <p style="margin:0;color:var(--muted)">
-            Phone: <a href="tel:+13852004532">385-200-4532</a><br />
+            Business: <strong>Kellan LLC</strong><br />
+            Phone: <a href="tel:+13159271510">315-927-1510</a><br />
             Email: <a href="mailto:over@kellanllc.com">over@kellanllc.com</a><br />
             Address: 2292 E Ranch Hand Way, Spanish Fork, UT 84660
           </p>
           <p class="fine" style="margin-top:14px">
-            Links: <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+            Links: <a href="privacy.html">Privacy Policy</a> · <a href="sms-terms.html">SMS Terms</a> · <a href="terms.html">Terms of Service</a>
           </p>
         </div>
 
@@ -407,7 +423,7 @@
               </div>
               <div>
                 <label for="phone">Mobile number</label>
-                <input id="phone" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="315-927-1510" />
               </div>
             </div>
 
@@ -417,30 +433,54 @@
             <label for="msg">What do you want automated?</label>
             <textarea id="msg" name="msg" placeholder="Missed calls, follow-up, reviews, reminders..."></textarea>
 
-            <div class="consent">
-              <label style="margin:0 0 8px; font-weight:900;">SMS consent (optional)</label>
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <input id="sms" type="checkbox" />
-                <div>
-                  I agree to receive SMS from <strong>Kellan LLC</strong> about my inquiry (demo scheduling, follow-up, and account updates).
-                  Message frequency varies. Msg&amp;data rates may apply.
-                  <strong>Message types:</strong> transactional/service updates (request follow-up, scheduling, reminders).
-                  Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.
-                  Consent is not required to purchase services.
-                </div>
+            <div class="consent" style="border-color: rgba(124,92,255,.45); background: rgba(124,92,255,.08);">
+              <label style="margin:0 0 8px; font-weight:900; color: var(--text);">SMS consent (optional)</label>
+
+              <!-- SMS Consent (A2P 10DLC) -->
+              <div class="sms-optin" data-disclosure-version="sms-v1-2026-02-17">
+                <label class="sms-check" id="smsDisclosureTransactional">
+                  <input id="smsTransactional" name="smsTransactional" type="checkbox" />
+                  <span>
+                    Yes — I agree to receive SMS text messages from <strong>Kellan LLC</strong> about my service request (scheduling, reminders, and updates).
+                    Message frequency varies. Msg &amp; data rates may apply.
+                    Reply <strong>STOP</strong> to cancel. Reply <strong>HELP</strong> for help.
+                    Consent is not a condition of purchase or service.
+                    <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> &nbsp;&#183;&nbsp;
+                    <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms</a> &nbsp;&#183;&nbsp;
+                    <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>
+                  </span>
+                </label>
+
+                <label class="sms-check" id="smsDisclosureMarketing">
+                  <input id="smsMarketing" name="smsMarketing" type="checkbox" />
+                  <span>
+                    Optional — send me occasional promotional texts/offers from <strong>Kellan LLC</strong>.
+                    Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out. Reply <strong>HELP</strong> for help.
+                    Consent is not a condition of purchase or service.
+                    <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> &nbsp;&#183;&nbsp;
+                    <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms</a> &nbsp;&#183;&nbsp;
+                    <a href="/terms.html" target="_blank" rel="noopener">Terms</a>
+                  </span>
+                </label>
+
+                <input type="hidden" id="smsDisclosureVersion" name="smsDisclosureVersion" value="sms-v1-2026-02-17" />
               </div>
+
+              <div id="formStatus" class="form-status" aria-live="polite"></div>
+
               <div class="fine">
-                By continuing, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
+                Links: <a href="privacy.html">Privacy Policy</a> · <a href="sms-terms.html">SMS Terms</a> · <a href="terms.html">Terms of Service</a>
               </div>
             </div>
 
             <div class="ctaRow" style="margin-top:12px">
-              <a class="btn" id="emailBtn" href="#">Get Started</a>
-              <a class="btn secondary" href="tel:+13852004532">Call Directly</a>
+              <a class="btn" id="emailBtn" href="mailto:over@kellanllc.com?subject=Interested%20in%20SMS%20Automation">Get Started</a>
+              <a class="btn secondary" href="tel:+13159271510">Call Directly</a>
             </div>
 
             <div class="fine">
-              Get Started opens a pre-filled draft in your default mail app.
+              Get Started opens a pre-filled email draft. No email app?
+              <a id="mailtoFallback" href="#" style="display:none; color:var(--accent2); font-weight:700;"></a>
             </div>
           </form>
         </div>
@@ -449,7 +489,7 @@
 
     <div class="footer">
       <div>© 2026 Kellan LLC. All rights reserved.</div>
-      <div><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+      <div><a href="privacy.html">Privacy</a> · <a href="sms-terms.html">SMS Terms</a> · <a href="terms.html">Terms</a></div>
     </div>
   </div>
 
@@ -457,6 +497,9 @@
     (function () {
       const emailBtn = document.getElementById('emailBtn');
       if (!emailBtn) return;
+
+      // Consent logging intentionally disabled (static-only build).
+      function logConsent(payload) { void payload; }
 
       emailBtn.addEventListener('click', function (e) {
         e.preventDefault();
@@ -466,7 +509,11 @@
         const phone = document.getElementById('phone')?.value || '';
         const biz = document.getElementById('biz')?.value || '';
         const msg = document.getElementById('msg')?.value || '';
-        const sms = document.getElementById('sms')?.checked ? 'YES' : 'NO';
+
+        const smsTransactional = !!document.getElementById('smsTransactional')?.checked;
+        const smsMarketing = !!document.getElementById('smsMarketing')?.checked;
+        const disclosureVersion = document.getElementById('smsDisclosureVersion')?.value || 'unknown';
+
         const subject = 'Interested in SMS Automation';
         const body = [
           'Name: ' + name,
@@ -476,14 +523,40 @@
           'Automation goals:',
           msg,
           '',
-          'SMS consent (optional): ' + sms
+          'SMS consent (transactional): ' + (smsTransactional ? 'YES' : 'NO'),
+          'SMS consent (marketing): ' + (smsMarketing ? 'YES' : 'NO'),
+          'SMS disclosure version: ' + disclosureVersion
         ].join('\n');
 
-        const mailtoUrl = 'mailto:' + encodeURIComponent(to)
-          + '?subject=' + encodeURIComponent(subject)
-          + '&body=' + encodeURIComponent(body);
+        const status = document.getElementById('formStatus');
+        if (status) {
+          status.textContent =
+            'Thanks — request received. If you opted into SMS: Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for help.';
+        }
 
-        window.location.href = mailtoUrl;
+        logConsent({
+          timestamp_iso: new Date().toISOString(),
+          page_url: window.location.href,
+          phone: (phone || '').trim(),
+          sms_transactional: smsTransactional,
+          sms_marketing: smsMarketing,
+          disclosure_version: disclosureVersion
+        });
+
+        const href =
+          'mailto:' + encodeURIComponent(to) +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+
+        const opened = window.open(href, '_self');
+        if (!opened) {
+          const fallback = document.getElementById('mailtoFallback');
+          if (fallback) {
+            fallback.href = href;
+            fallback.style.display = 'inline-block';
+            fallback.textContent = 'Click here to open email draft';
+          }
+        }
       });
     })();
   </script>
